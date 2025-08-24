@@ -56,7 +56,7 @@ def preliminary_cleaning():
     for i in raw_data_df.columns:
         if i != "Date":
             var_name = re.findall("(\D)", i)
-            var_name_cleaned = ("".join(var_name)).replace(".", "_")
+            var_name_cleaned = ("".join(var_name)).replace(".", "")
 
             index_raw = re.findall("(\d*)", i)
             col_index_array = np.array(index_raw)
@@ -64,9 +64,9 @@ def preliminary_cleaning():
 
             all_tickers = cleaning_col_names()
 
-            final_var_name = var_name_cleaned + str(all_tickers[index_cleaned])
+            final_var_name =   str(all_tickers[index_cleaned]) + "_" + var_name_cleaned
             raw_data_df.rename({str(i): str(final_var_name)}, axis=1, inplace=True)
-
+    print(raw_data_df.columns)
     raw_data_df.to_excel("raw_data_cleaned.xlsx")
     return raw_data_df
 

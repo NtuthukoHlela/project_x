@@ -3,7 +3,7 @@ programmer: ntuthuko hlela
 goal: test snippets of code
 '''
 import re
-
+import yfinance as yf
 import pandas as pd
 
 '''
@@ -23,10 +23,27 @@ for i in p:
 
 print(final_list)
 
-'''
+
 s = ["n", "t", "u"]
 
 k = pd.DataFrame({"x": [1,2,3,4], "y": [5,6,7,8]})
-z = pd.DataFrame({"z": [11,21,31,41]})
-l = pd.concat([k,z], axis=1)
-print(l)
+x = k["x"].rolling(window=2).sum()
+print(type(x))
+k["new"] = x
+print(k)
+
+
+j = yf.Ticker("BTC-USD")
+print(j.info)
+
+df = pd.DataFrame([1, 2, 3, 4])
+h = df[df[0]>1]
+print(h)
+print(pd.to_datetime("2025-01-01"))
+'''
+import matplotlib
+matplotlib.use('MacOSX')
+import matplotlib.pyplot as plt
+import numpy as np
+plt.plot(np.array([1,2,3,4]), np.array([4,5,6,3]))
+plt.show()
