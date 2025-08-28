@@ -40,10 +40,11 @@ df = pd.DataFrame([1, 2, 3, 4])
 h = df[df[0]>1]
 print(h)
 print(pd.to_datetime("2025-01-01"))
+
+
+k = yf.Ticker("WULF").get_earnings()
+k.to_excel("wulf_balance_sheet.xlsx")
+print(k)
 '''
-import matplotlib
-matplotlib.use('MacOSX')
-import matplotlib.pyplot as plt
-import numpy as np
-plt.plot(np.array([1,2,3,4]), np.array([4,5,6,3]))
-plt.show()
+z = yf.Sector("technology").top_companies
+print(z)
